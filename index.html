@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; form-action https://app.kit.com https://app.convertkit.com; base-uri 'none'; frame-ancestors 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Creed-to-Commerce™ Idea Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A227; --gold-d:#8a6d0b; --green:#0B5D3B; --green-d:#073d27;
+  --bg:#FBF8EF; --card:#fff; --ink:#1d2a24; --muted:#5d6b64; --line:#e6dfcb;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+h1,h2,h3{font-family:Amiri,Georgia,serif;margin:0}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+.hero{background:linear-gradient(135deg,var(--green-d),var(--green) 55%,#127a50);color:#fff;padding:26px 0 70px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -10% -60px -10%;height:120px;background:var(--bg);border-radius:50% 50% 0 0/100% 100% 0 0}
+.basmala{font-family:Amiri,serif;font-size:clamp(26px,5vw,38px);text-align:center;color:var(--gold);direction:rtl;margin-bottom:6px}
+.hero h1{text-align:center;font-size:clamp(28px,5vw,44px);line-height:1.15}
+.hero p.sub{text-align:center;max-width:640px;margin:8px auto 0;opacity:.92}
+.topbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.btn{border:0;border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px;background:#fff;color:var(--green-d);box-shadow:0 1px 3px rgba(0,0,0,.18);transition:transform .12s}
+.btn:hover{transform:translateY(-1px)}
+.btn.gold{background:var(--gold);color:#1d1600}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.35)}
+.btn.line{background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:none}
+.btn.danger{background:#fff;color:#b3261e;border:1px solid #f0c9c5;box-shadow:none}
+.btn.sm{padding:6px 11px;font-size:13px}
+.projectbar{margin-top:-46px;position:relative;z-index:2;background:var(--card);border-radius:var(--radius);box-shadow:0 8px 28px rgba(7,61,39,.14);padding:16px;display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+.projectbar label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:3px}
+input[type=text],input[type=password],input[type=email],textarea,select{width:100%;font:inherit;color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:3px solid rgba(201,162,39,.45);outline-offset:1px;border-color:var(--gold)}
+.ring{--p:0;width:64px;height:64px;border-radius:50%;background:conic-gradient(var(--gold) calc(var(--p)*1%),#eee 0);display:grid;place-items:center}
+.ring span{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.journey{display:flex;gap:8px;overflow-x:auto;padding:22px 2px 8px;scrollbar-width:thin}
+.tab{flex:1 0 140px;border:0;border-radius:14px;padding:12px 12px 10px;text-align:left;color:#fff;background:var(--c);position:relative;box-shadow:0 3px 10px rgba(0,0,0,.12);opacity:.78;transition:.15s}
+.tab:hover{opacity:1}
+.tab.active{opacity:1;transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.22)}
+.tab .n{font-size:11px;font-weight:700;opacity:.85;letter-spacing:.06em}
+.tab .t{font-family:Amiri,serif;font-size:21px;font-weight:700;line-height:1.1}
+.tab .bar{height:5px;border-radius:5px;background:rgba(255,255,255,.3);margin-top:8px;overflow:hidden}
+.tab .bar i{display:block;height:100%;background:#fff;width:0}
+.tab.overview{--c:linear-gradient(135deg,var(--green),var(--gold-d))}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.panel{background:var(--card);border-radius:var(--radius);box-shadow:0 4px 18px rgba(0,0,0,.07);overflow:hidden;margin-bottom:30px}
+.panel-head{background:var(--c);color:#fff;padding:20px 22px}
+.panel-head h2{font-size:32px}
+.panel-head .tag{opacity:.92}
+.panel-body{padding:20px 22px}
+.stage-edit{display:grid;grid-template-columns:1fr 1fr 70px;gap:10px;margin-bottom:16px}
+.stage-edit label{font-size:12px;font-weight:600;color:var(--muted)}
+input[type=color]{width:100%;height:40px;padding:2px;border-radius:10px;border:1.5px solid var(--line);background:#fff}
+.field{border:1.5px solid var(--line);border-left:6px solid var(--c);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:#fffdf8}
+.field .qrow{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.field .q{font-weight:600;flex:1;border:0;background:transparent;padding:4px 0;border-bottom:1px dashed var(--line);border-radius:0}
+.field textarea{min-height:92px;resize:vertical}
+.field.is-sample textarea{font-style:italic;color:#6b5a1e;background:#fff9e3}
+.badge{display:none;font-size:11px;font-weight:700;background:var(--gold);color:#1d1600;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.field.is-sample .badge{display:inline-block}
+.iconbtn{border:0;background:transparent;color:var(--muted);font-size:13px;padding:4px 7px;border-radius:8px}
+.iconbtn:hover{background:#f0eadb;color:#b3261e}
+.hint{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08);display:flex;flex-direction:column;cursor:pointer;border:0;text-align:left;padding:0;transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .ch{background:var(--c);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.card .ch b{font-family:Amiri,serif;font-size:24px}
+.card .cb{padding:12px 16px 16px;font-size:14px;color:var(--muted)}
+.card .mini{height:7px;border-radius:7px;background:#eee;margin-top:10px;overflow:hidden}
+.card .mini i{display:block;height:100%;background:var(--c)}
+footer{text-align:center;padding:30px 18px 44px;color:var(--muted);font-size:13px}
+footer b{font-family:Amiri,serif;color:var(--green);font-size:16px}
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(7,40,28,.62);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal{background:#fff;border-radius:18px;max-width:640px;width:100%;max-height:90vh;overflow:auto;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.modal h2{font-size:30px;color:var(--green)}
+.modal .row{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.modal .row:last-of-type{border:0}
+.modal .row input[type=checkbox]{width:20px;height:20px;margin-top:3px;accent-color:var(--green);flex:none}
+.modal .actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}
+.modal .btn.gold,.modal .btn.primary{box-shadow:none}
+.btn.primary{background:var(--green);color:#fff}
+.err{color:#b3261e;font-size:13px;min-height:18px}
+.lock{position:fixed;inset:0;background:linear-gradient(135deg,var(--green-d),var(--green));z-index:90;display:flex;align-items:center;justify-content:center;padding:16px}
+.lock .modal{text-align:center;max-width:420px}
+/* report */
+#report{display:none}
+#report.show{display:block;position:fixed;inset:0;background:#e9e4d3;overflow:auto;z-index:60}
+.rbar{position:sticky;top:0;background:var(--green-d);color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;z-index:2}
+.rbar label{font-size:13px;display:flex;gap:6px;align-items:center}
+.sheet{background:#fff;width:min(820px,100%);margin:18px auto;padding:44px 48px;box-shadow:0 4px 18px rgba(0,0,0,.2)}
+.sheet h1{font-size:44px;color:var(--green)}
+.sheet h2{font-size:28px}
+.cover{text-align:center;padding-top:40px}
+.cover .basmala{color:var(--gold-d);font-size:34px}
+.cover .meta{color:var(--muted);margin-top:10px}
+.cover .rule{height:4px;width:120px;margin:22px auto;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:4px}
+.rrow{display:flex;gap:10px;align-items:center;margin:8px 0}
+.rrow .nm{width:120px;font-family:Amiri,serif;font-weight:700;font-size:18px}
+.rrow .bar{flex:1;height:12px;background:#eee;border-radius:12px;overflow:hidden}
+.rrow .bar i{display:block;height:100%}
+.rhead{color:#fff;padding:14px 18px;border-radius:12px;margin-bottom:14px}
+.rq{margin:0 0 14px;padding-left:12px;border-left:5px solid var(--c);break-inside:avoid}
+.rq b{display:block}
+.rq p{margin:3px 0 0;white-space:pre-wrap}
+.rfoot{margin-top:26px;padding-top:10px;border-top:2px solid var(--gold);font-size:12px;color:var(--muted);text-align:center}
+@media (max-width:720px){.projectbar{grid-template-columns:1fr}.stage-edit{grid-template-columns:1fr}.sheet{padding:24px 18px}}
+@media print{
+  @page{margin:14mm}
+  body{background:#fff}
+  body>*:not(#report){display:none!important}
+  #report.show{position:static;background:#fff;overflow:visible;display:block}
+  .rbar{display:none!important}
+  .sheet{box-shadow:none;margin:0;width:100%;padding:0;page-break-after:always}
+  .sheet:last-child{page-break-after:auto}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="report" aria-label="Report preview"></div>
+<div id="modalRoot"></div>
+
+<script>
+"use strict";
+/* ============ CONFIGURE ============ */
+const CONFIG = {
+  brand: "The Balanced Middle Path Academy, LLC",
+  // Paste your Kit form action URL (e.g. https://app.kit.com/forms/XXXXXX/subscriptions) to enable the optional opt-in box. Leave "" to hide it.
+  kitFormUrl: "",
+  storageKey: "bmpa_c2c_idea_builder_v1",
+  consentKey: "bmpa_c2c_idea_builder_consent_v1"
+};
+const LIMITS = {text:6000, label:200, stages:8, fields:12};
+
+/* ============ DEFAULT FRAMEWORK (editable in-app) ============ */
+const DEFAULT_STAGES = [
+ {name:"Creed", tagline:"Anchor everything in your why", color:"#0B7A4B", fields:[
+  ["What principles will your business never compromise?","Sample: Honesty in every deal, no interest-based financing, fair pay for every team member."],
+  ["Why are you starting this venture? State your intention (niyyah).","Sample: To serve my community with halal, high-quality bread while building a family legacy."],
+  ["How will you know you are staying true to your creed?","Sample: A monthly review of every decision against our written principles."]]},
+ {name:"Calling", tagline:"Match your gifts to a real need", color:"#1F66C1", fields:[
+  ["What problem do you feel called to solve, and for whom?","Sample: Busy working families who want wholesome, halal-certified baked goods."],
+  ["What skills, experience and gifts do you bring?","Sample: 10 years of baking, strong community ties, bookkeeping skills."],
+  ["What makes your idea different from what already exists?","Sample: Traditional recipes, transparent sourcing, and a pay-it-forward bread program."]]},
+ {name:"Craft", tagline:"Shape the offer people will value", color:"#7B3FBF", fields:[
+  ["What exactly will you offer? Describe the product or service.","Sample: Weekly subscription boxes of sourdough, dates bread and pastries."],
+  ["What does the customer experience from first contact to delivery?","Sample: Order online, pickup or delivery Fridays, handwritten thank-you note."],
+  ["What quality standards will you set?","Sample: Same-day baking, halal-certified ingredients, 100% satisfaction promise."]]},
+ {name:"Capital", tagline:"Fund it in a way that honors your creed", color:"#D98E00", fields:[
+  ["How much start-up capital do you need, and for what?","Sample: $15,000 for oven, packaging, licenses and 3 months of ingredients."],
+  ["What halal funding sources will you use?","Sample: Personal savings, profit-sharing partner, and pre-sold subscriptions."],
+  ["What is your break-even point?","Sample: 85 subscribers per month covers all costs."]]},
+ {name:"Commerce", tagline:"Reach customers and make the sale", color:"#E2553F", fields:[
+  ["Who is your ideal customer and where do they spend time?","Sample: Parents aged 28-45 on Instagram, at mosques and local school events."],
+  ["How will you attract and convert customers?","Sample: Free tasting events, referral rewards, an Instagram content plan, a Kit email list."],
+  ["What will you charge, and why?","Sample: $38 per weekly box, priced 15% above supermarket for premium quality."]]},
+ {name:"Community", tagline:"Multiply benefit beyond profit", color:"#C2255C", fields:[
+  ["Who benefits from your success besides you?","Sample: Employees, local farmers, and families receiving donated bread."],
+  ["How will you give back (sadaqah, mentoring, hiring)?","Sample: 5% of profit to a local food bank and an apprenticeship for two youths yearly."],
+  ["What does success look like in 3 years?","Sample: A second location, 10 employees with fair wages, and a trusted local brand."]]}
+];
+
+/* ============ STATE ============ */
+let state = null;       // decrypted app data (null while locked)
+let cryptoKey = null;   // in-memory only
+let consent = null;
+let current = 0;        // 0 = overview, 1..n = stage
+let saveTimer = null, idleTimer = null;
+const hasCrypto = !!(window.crypto && crypto.subtle);
+
+function uid(){return Math.random().toString(36).slice(2,9)}
+function freshState(){
+  return {v:1, project:"Noor Artisan Bakery (sample)", owner:"", commitments:"Sample: This month I will interview 10 potential customers and finalize my pricing.", commitSample:true,
+    stages:DEFAULT_STAGES.map(s=>({id:uid(), name:s.name, tagline:s.tagline, color:s.color, include:true,
+      fields:s.fields.map(f=>({id:uid(), q:f[0], a:f[1], sample:true}))}))};
+}
+function clip(s,n){return String(s==null?"":s).slice(0,n)}
+function sanitize(o){
+  if(!o||typeof o!=="object"||!Array.isArray(o.stages)) throw new Error("Not a valid backup file.");
+  const st = {v:1, project:clip(o.project,LIMITS.label), owner:clip(o.owner,LIMITS.label), commitments:clip(o.commitments,LIMITS.text), commitSample:!!o.commitSample, stages:[]};
+  o.stages.slice(0,LIMITS.stages).forEach(s=>{
+    if(!s||typeof s!=="object") return;
+    const color = /^#[0-9a-f]{6}$/i.test(s.color)? s.color : "#0B7A4B";
+    const fields = (Array.isArray(s.fields)?s.fields:[]).slice(0,LIMITS.fields).map(f=>({id:uid(), q:clip(f&&f.q,LIMITS.label), a:clip(f&&f.a,LIMITS.text), sample:!!(f&&f.sample)}));
+    st.stages.push({id:uid(), name:clip(s.name,60)||"Stage", tagline:clip(s.tagline,LIMITS.label), color, include:s.include!==false, fields});
+  });
+  if(!st.stages.length) throw new Error("Backup has no stages.");
+  return st;
+}
+
+/* ============ SAFE HELPERS ============ */
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const $ = (sel,root=document)=>root.querySelector(sel);
+function stageProgress(s){
+  const real = s.fields.filter(f=>!f.sample && f.a.trim().length>0).length;
+  return s.fields.length ? Math.round(real/s.fields.length*100) : 0;
+}
+function overallProgress(){
+  const t = state.stages.reduce((n,s)=>n+s.fields.length,0);
+  const d = state.stages.reduce((n,s)=>n+s.fields.filter(f=>!f.sample&&f.a.trim()).length,0);
+  return t? Math.round(d/t*100):0;
+}
+
+/* ============ CRYPTO (AES-GCM, PBKDF2) ============ */
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const unb64 = s => Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function deriveKey(pass,salt){
+  const base = await crypto.subtle.importKey("raw",new TextEncoder().encode(pass),"PBKDF2",false,["deriveKey"]);
+  return crypto.subtle.deriveKey({name:"PBKDF2",salt,iterations:250000,hash:"SHA-256"},base,{name:"AES-GCM",length:256},false,["encrypt","decrypt"]);
+}
+async function encryptWith(key,saltB64,obj){
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await crypto.subtle.encrypt({name:"AES-GCM",iv},key,new TextEncoder().encode(JSON.stringify(obj)));
+  return {enc:true,salt:saltB64,iv:b64(iv),ct:b64(ct)};
+}
+async function decryptWith(key,pack){
+  const pt = await crypto.subtle.decrypt({name:"AES-GCM",iv:unb64(pack.iv)},key,unb64(pack.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
+/* ============ STORAGE ============ */
+const mem = {}; // fallback when localStorage is blocked
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}
+let saltB64 = null;
+async function persist(){
+  if(!state || !consent || !consent.save){return}
+  let pack;
+  if(cryptoKey) pack = await encryptWith(cryptoKey,saltB64,state);
+  else pack = {enc:false,data:state};
+  lsSet(CONFIG.storageKey,JSON.stringify(pack));
+}
+function queueSave(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>persist().catch(()=>{}),400);bumpIdle()}
+function storedPack(){try{return JSON.parse(lsGet(CONFIG.storageKey)||"null")}catch(e){return null}}
+
+/* ============ MODALS ============ */
+function openModal(html,opts={}){
+  const root=$("#modalRoot");
+  const el=document.createElement("div");el.className="overlay";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");
+  el.innerHTML=`<div class="modal">${html}</div>`;
+  root.appendChild(el);
+  const first=el.querySelector("input,textarea,button");if(first&&!opts.noFocus)first.focus();
+  el.close=()=>el.remove();
+  if(!opts.locked){el.addEventListener("keydown",e=>{if(e.key==="Escape")el.close()})}
+  return el;
+}
+function ask(msg,okLabel="Continue",danger=false){
+  return new Promise(res=>{
+    const m=openModal(`<p>${esc(msg)}</p><div class="actions"><button class="btn line" data-r="0">Cancel</button><button class="btn ${danger?"danger":"primary"}" data-r="1">${esc(okLabel)}</button></div>`);
+    m.addEventListener("click",e=>{const b=e.target.closest("[data-r]");if(b){m.close();res(b.dataset.r==="1")}});
+  });
+}
+
+/* ============ RENDER ============ */
+function render(){
+  const s = state;
+  const stageTabs = s.stages.map((st,i)=>`<button class="tab ${current===i+1?"active":""}" style="--c:${st.color}" data-act="goto" data-i="${i+1}" aria-label="Stage ${i+1}: ${esc(st.name)}"><div class="n">STAGE ${i+1}</div><div class="t">${esc(st.name)}</div><div class="bar"><i style="width:${stageProgress(st)}%"></i></div></button>`).join("");
+  $("#app").innerHTML = `
+  <header class="hero"><div class="wrap">
+    <div class="basmala" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h1>Creed-to-Commerce™ Idea Builder</h1>
+    <p class="sub">Turn your idea into a business that stays accountable to your creed. Walk the six stages, make the sample text your own, and print a report.</p>
+    <div class="topbar">
+      <button class="btn gold" data-act="report">Create PDF report</button>
+      <button class="btn ghost" data-act="privacy">Privacy &amp; security</button>
+      <button class="btn ghost" data-act="backup">Backup / restore</button>
+      ${cryptoKey?`<button class="btn ghost" data-act="lock">Lock now</button>`:""}
+    </div>
+  </div></header>
+  <main class="wrap">
+    <section class="projectbar">
+      <div><label for="pName">Business / idea name</label><input type="text" id="pName" data-bind="project" maxlength="${LIMITS.label}" value="${esc(s.project)}"></div>
+      <div><label for="pOwner">Prepared by</label><input type="text" id="pOwner" data-bind="owner" maxlength="${LIMITS.label}" placeholder="Your name" value="${esc(s.owner)}"></div>
+      <div class="ring" id="ring" style="--p:${overallProgress()}" title="Overall completion (your own answers only)"><span id="ringTxt">${overallProgress()}%</span></div>
+    </section>
+    <nav class="journey" aria-label="Framework stages">
+      <button class="tab overview ${current===0?"active":""}" data-act="goto" data-i="0"><div class="n">START</div><div class="t">Overview</div><div class="bar"><i style="width:${overallProgress()}%"></i></div></button>
+      ${stageTabs}
+    </nav>
+    <div class="toolbar">
+      <button class="btn line sm" data-act="clearSampleAll">Remove all sample text</button>
+      <button class="btn line sm" data-act="restoreSample">Restore sample text</button>
+      <button class="btn danger sm" data-act="clearAll">Clear everything</button>
+    </div>
+    ${current===0?renderOverview():renderStage(current-1)}
+  </main>
+  <footer><b>Creed-to-Commerce™</b><br>© ${new Date().getFullYear()} ${esc(CONFIG.brand)} · Your answers stay on this device.</footer>`;
+}
+function renderOverview(){
+  const cards = state.stages.map((st,i)=>{
+    const p=stageProgress(st);
+    return `<button class="card" style="--c:${st.color}" data-act="goto" data-i="${i+1}"><div class="ch"><b>${i+1}. ${esc(st.name)}</b><span>${p}%</span></div><div class="cb">${esc(st.tagline)}<div class="mini"><i style="width:${p}%"></i></div></div></button>`;
+  }).join("");
+  const kit = CONFIG.kitFormUrl && consent.kit ? `
+    <form class="panel" style="padding:18px 22px" action="${esc(CONFIG.kitFormUrl)}" method="post" target="_blank" rel="noopener">
+      <h3 style="font-size:24px;color:var(--green)">Get more Creed-to-Commerce™ tools</h3>
+      <p class="hint">Optional. Only your email is sent, to ${esc(CONFIG.brand)} through Kit, and only if you press Subscribe.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><input type="email" name="email_address" required placeholder="you@example.com" style="flex:1;min-width:200px"><button class="btn primary" type="submit">Subscribe</button></div>
+    </form>`:"";
+  return `
+  <div class="grid">${cards}</div>
+  <section class="panel" style="margin-top:22px"><div class="panel-head" style="--c:linear-gradient(135deg,var(--green),var(--gold-d))"><h2>My next-90-day commitments</h2><div class="tag">Turn the six stages into action.</div></div>
+    <div class="panel-body"><div class="field ${state.commitSample?"is-sample":""}" style="--c:var(--gold)"><div class="qrow"><span class="q" style="border:0">What will I do first?</span><span class="badge">SAMPLE</span><button class="iconbtn" data-act="clearCommit" title="Clear">Clear</button></div>
+    <textarea data-bind="commitments" maxlength="${LIMITS.text}" aria-label="Commitments">${esc(state.commitments)}</textarea></div></div></section>
+  ${kit}`;
+}
+function renderStage(i){
+  const st = state.stages[i];
+  const fields = st.fields.map((f,j)=>`
+    <div class="field ${f.sample?"is-sample":""}" style="--c:${st.color}">
+      <div class="qrow">
+        <input class="q" type="text" data-bind="q" data-s="${i}" data-f="${j}" maxlength="${LIMITS.label}" value="${esc(f.q)}" aria-label="Question">
+        <span class="badge">SAMPLE</span>
+        <button class="iconbtn" data-act="clearField" data-s="${i}" data-f="${j}" title="Clear this answer">Clear</button>
+        <button class="iconbtn" data-act="delField" data-s="${i}" data-f="${j}" title="Delete this question">Delete</button>
+      </div>
+      <textarea data-bind="a" data-s="${i}" data-f="${j}" maxlength="${LIMITS.text}" placeholder="Write your answer here…" aria-label="Answer">${esc(f.a)}</textarea>
+    </div>`).join("");
+  return `
+  <section class="panel" style="--c:${st.color}">
+    <div class="panel-head"><div class="n" style="font-size:12px;letter-spacing:.08em;opacity:.85">STAGE ${i+1} OF ${state.stages.length}</div><h2>${esc(st.name)}</h2><div class="tag">${esc(st.tagline)}</div></div>
+    <div class="panel-body">
+      <div class="stage-edit">
+        <div><label for="sn">Stage name</label><input type="text" id="sn" data-bind="sname" data-s="${i}" maxlength="60" value="${esc(st.name)}"></div>
+        <div><label for="st">Tagline</label><input type="text" id="st" data-bind="stag" data-s="${i}" maxlength="${LIMITS.label}" value="${esc(st.tagline)}"></div>
+        <div><label for="sc">Color</label><input type="color" id="sc" data-bind="scolor" data-s="${i}" value="${esc(st.color)}"></div>
+      </div>
+      ${fields}
+      <div class="toolbar">
+        <button class="btn line sm" data-act="addField" data-s="${i}">+ Add a question</button>
+        <button class="btn line sm" data-act="clearStageSample" data-s="${i}">Remove sample text in this stage</button>
+        <label class="hint" style="display:flex;gap:6px;align-items:center;margin-left:auto"><input type="checkbox" data-bind="sinc" data-s="${i}" ${st.include?"checked":""}> Include in PDF report</label>
+      </div>
+      <div class="toolbar" style="justify-content:space-between">
+        <button class="btn line sm" data-act="goto" data-i="${i}" ${i===0?"":""}>← ${i===0?"Overview":esc(state.stages[i-1].name)}</button>
+        <button class="btn primary sm" data-act="goto" data-i="${i+2>state.stages.length+0?0:i+2}">${i+1>=state.stages.length?"Finish → Overview":"Next: "+esc(state.stages[i+1].name)+" →"}</button>
+      </div>
+    </div>
+  </section>`;
+}
+function refreshProgress(){
+  const p=overallProgress();
+  const r=$("#ring");if(r){r.style.setProperty("--p",p);$("#ringTxt").textContent=p+"%"}
+  document.querySelectorAll(".journey .tab").forEach((t,idx)=>{
+    const bar=t.querySelector(".bar i");if(!bar)return;
+    bar.style.width=(idx===0?p:stageProgress(state.stages[idx-1]))+"%";
+  });
+}
+
+/* ============ EVENTS ============ */
+document.addEventListener("input",e=>{
+  const t=e.target;const b=t.dataset&&t.dataset.bind;if(!b||!state)return;
+  const s=t.dataset.s!==undefined?state.stages[+t.dataset.s]:null;
+  const f=t.dataset.f!==undefined&&s?s.fields[+t.dataset.f]:null;
+  if(b==="project")state.project=t.value;
+  else if(b==="owner")state.owner=t.value;
+  else if(b==="commitments"){state.commitments=t.value;state.commitSample=false;t.closest(".field").classList.remove("is-sample")}
+  else if(b==="q"&&f)f.q=t.value;
+  else if(b==="a"&&f){f.a=t.value;f.sample=false;t.closest(".field").classList.remove("is-sample")}
+  else if(b==="sname"&&s)s.name=t.value;
+  else if(b==="stag"&&s)s.tagline=t.value;
+  else if(b==="scolor"&&s&&/^#[0-9a-f]{6}$/i.test(t.value))s.color=t.value;
+  else if(b==="sinc"&&s)s.include=t.checked;
+  refreshProgress();queueSave();
+});
+document.addEventListener("change",e=>{
+  const b=e.target.dataset&&e.target.dataset.bind;
+  if(state&&(b==="scolor"||b==="sname")){render()} // refresh header colors/names
+});
+document.addEventListener("click",async e=>{
+  const el=e.target.closest("[data-act]");if(!el||!state)return;
+  bumpIdle();
+  const act=el.dataset.act,i=+el.dataset.i,s=el.dataset.s!==undefined?+el.dataset.s:null,f=el.dataset.f!==undefined?+el.dataset.f:null;
+  switch(act){
+    case "goto":current=Math.max(0,Math.min(state.stages.length,i));render();window.scrollTo({top:0,behavior:"smooth"});break;
+    case "clearField":state.stages[s].fields[f].a="";state.stages[s].fields[f].sample=false;render();queueSave();break;
+    case "delField":if(await ask("Delete this question and its answer?","Delete",true)){state.stages[s].fields.splice(f,1);render();queueSave()}break;
+    case "addField":
+      if(state.stages[s].fields.length>=LIMITS.fields){openModal(`<p>Maximum ${LIMITS.fields} questions per stage.</p><div class="actions"><button class="btn primary" onclick="this.closest('.overlay').remove()">OK</button></div>`);break}
+      state.stages[s].fields.push({id:uid(),q:"New question",a:"",sample:false});render();queueSave();break;
+    case "clearStageSample":state.stages[s].fields.forEach(x=>{if(x.sample){x.a="";x.sample=false}});render();queueSave();break;
+    case "clearCommit":state.commitments="";state.commitSample=false;render();queueSave();break;
+    case "clearSampleAll":
+      state.stages.forEach(st=>st.fields.forEach(x=>{if(x.sample){x.a="";x.sample=false}}));
+      if(state.commitSample){state.commitments="";state.commitSample=false}
+      if(/\(sample\)$/.test(state.project))state.project="";
+      render();queueSave();break;
+    case "restoreSample":
+      if(await ask("Restore the original sample framework? This replaces your current stages, questions and answers.","Restore",true)){const keep={project:state.project,owner:state.owner};state=freshState();state.owner=keep.owner;current=0;render();queueSave()}break;
+    case "clearAll":
+      if(await ask("Clear every answer, keep your questions and stages?","Clear everything",true)){state.stages.forEach(st=>st.fields.forEach(x=>{x.a="";x.sample=false}));state.commitments="";state.commitSample=false;render();queueSave()}break;
+    case "report":openReport();break;
+    case "privacy":openPrivacy();break;
+    case "backup":openBackup();break;
+    case "lock":lock();break;
+  }
+});
+["pointerdown","keydown","touchstart"].forEach(ev=>document.addEventListener(ev,bumpIdle,{passive:true}));
+function bumpIdle(){
+  clearTimeout(idleTimer);
+  if(!cryptoKey||!consent||!consent.autolock)return;
+  idleTimer=setTimeout(lock,consent.autolock*60000);
+}
+
+/* ============ REPORT (print to PDF) ============ */
+let rOpts={sample:false,identity:true};
+function openReport(){
+  rOpts={sample:false,identity:true};renderReport();
+  $("#report").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeReport(){$("#report").classList.remove("show");$("#report").innerHTML="";document.body.style.overflow=""}
+function renderReport(){
+  const keepScroll=$("#report").scrollTop;
+  const useField=f=>f.a.trim()&&(rOpts.sample||!f.sample);
+  const inc=state.stages.filter(s=>s.include);
+  const date=new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"});
+  const overview=inc.map(s=>{const p=stageProgress(s);return `<div class="rrow"><div class="nm" style="color:${s.color}">${esc(s.name)}</div><div class="bar"><i style="width:${p}%;background:${s.color}"></i></div><div style="width:42px;text-align:right;font-weight:600">${p}%</div></div>`}).join("");
+  const stagePages=inc.map((s,i)=>{
+    const qs=s.fields.filter(useField).map(f=>`<div class="rq" style="--c:${s.color}"><b>${esc(f.q)}</b><p>${esc(f.a)}</p></div>`).join("")||`<p class="hint">No answers entered for this stage yet.</p>`;
+    return `<section class="sheet"><div class="rhead" style="background:${s.color}"><div style="font-size:12px;letter-spacing:.08em;opacity:.9">STAGE ${i+1}</div><h2>${esc(s.name)}</h2><div>${esc(s.tagline)}</div></div>${qs}<div class="rfoot">Creed-to-Commerce™ · ${esc(CONFIG.brand)}</div></section>`;
+  }).join("");
+  const showCommit=state.commitments.trim()&&(rOpts.sample||!state.commitSample);
+  const gaps=inc.filter(s=>stageProgress(s)<100).map(s=>s.name);
+  $("#report").innerHTML=`
+  <div class="rbar">
+    <button class="btn gold sm" data-r="print">Save as PDF / Print</button>
+    <button class="btn ghost sm" data-r="close">Close</button>
+    <label><input type="checkbox" data-r="sample" ${rOpts.sample?"checked":""}> Include sample text</label>
+    <label><input type="checkbox" data-r="identity" ${rOpts.identity?"checked":""}> Include business &amp; author name</label>
+    <span style="font-size:12px;opacity:.85">Tip: in the print window choose "Save as PDF" as the destination.</span>
+  </div>
+  <section class="sheet cover">
+    <div class="basmala" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h1>Creed-to-Commerce™<br>Idea Report</h1>
+    <div class="rule"></div>
+    ${rOpts.identity?`<h2>${esc(state.project||"Untitled idea")}</h2><div class="meta">${state.owner?"Prepared by "+esc(state.owner)+" · ":""}${esc(date)}</div>`:`<div class="meta">${esc(date)}</div>`}
+    <div style="max-width:520px;margin:34px auto 0;text-align:left"><h2 style="font-size:22px;color:var(--green)">Framework progress</h2>${overview||"<p class='hint'>No stages selected.</p>"}</div>
+    ${showCommit?`<div style="max-width:520px;margin:28px auto 0;text-align:left"><h2 style="font-size:22px;color:var(--green)">Next-90-day commitments</h2><p style="white-space:pre-wrap">${esc(state.commitments)}</p></div>`:""}
+    ${gaps.length?`<p class="hint" style="margin-top:22px">Still to complete: ${gaps.map(esc).join(", ")}.</p>`:""}
+    <div class="rfoot" style="margin-top:50px">Creed-to-Commerce™ · ${esc(CONFIG.brand)}</div>
+  </section>
+  ${stagePages}`;
+  $("#report").scrollTop=keepScroll;
+}
+document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-r]");if(!el||!$("#report").classList.contains("show"))return;
+  const r=el.dataset.r;
+  if(r==="print")window.print();
+  else if(r==="close")closeReport();
+  else if(r==="sample"||r==="identity"){rOpts[r]=el.checked;renderReport()}
+});
+
+/* ============ PRIVACY & SECURITY ============ */
+function openPrivacy(){
+  const enc=!!cryptoKey;
+  const m=openModal(`
+  <h2>Privacy &amp; security</h2>
+  <p class="hint">Everything you type is stored only in this browser. Nothing is sent to ${esc(CONFIG.brand)} or anyone else unless you choose to subscribe or share your PDF.</p>
+  <div class="row"><input type="checkbox" id="pSave" ${consent.save?"checked":""}><label for="pSave"><b>Save my work on this device</b><br><span class="hint">Turn off to keep work in memory only. It disappears when you close the tab, and the saved copy is erased.</span></label></div>
+  ${CONFIG.kitFormUrl?`<div class="row"><input type="checkbox" id="pKit" ${consent.kit?"checked":""}><label for="pKit"><b>Allow the optional email sign-up box</b><br><span class="hint">Off by default. Nothing is sent unless you press Subscribe.</span></label></div>`:""}
+  <div class="row"><div style="flex:1"><b>Passcode encryption: ${enc?"ON":"OFF"}</b><br><span class="hint">${hasCrypto?"Encrypts your saved work with AES-256-GCM using a key derived from your passcode (PBKDF2, 250,000 rounds). <b>If you forget the passcode, the data cannot be recovered.</b> Keep an encrypted backup.":"Your browser does not support encryption here (a secure https:// page is required)."}</span>
+  <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${hasCrypto?(enc?`<button class="btn line sm" data-p="chg">Change passcode</button><button class="btn danger sm" data-p="rm">Remove passcode</button>`:`<button class="btn primary sm" data-p="set">Set a passcode</button>`):""}</div></div></div>
+  ${enc?`<div class="row"><div style="flex:1"><label for="pLock"><b>Auto-lock after inactivity</b></label><select id="pLock"><option value="0">Never</option>${[2,5,10,15,30].map(n=>`<option value="${n}" ${consent.autolock===n?"selected":""}>${n} minutes</option>`).join("")}</select></div></div>`:`<div class="row"><span class="hint">Auto-lock becomes available after you set a passcode.</span></div>`}
+  <div class="row"><div style="flex:1"><b>Your data rights</b><br><span class="hint">Export a backup, or erase everything this app stored on this device and withdraw your consent.</span><div style="margin-top:8px"><button class="btn danger sm" data-p="erase">Erase all data &amp; withdraw consent</button></div></div></div>
+  <p class="hint">Technical safeguards: strict Content-Security-Policy (no third-party scripts), no cookies, no tracking, no analytics. Only Google Fonts is loaded for typography. Anyone with access to your unlocked device and browser can still view data while the app is unlocked.</p>
+  <div class="actions"><button class="btn primary" data-p="done">Done</button></div>`);
+  m.addEventListener("change",e=>{
+    if(e.target.id==="pSave"){consent.save=e.target.checked;saveConsent();if(consent.save)persist();else lsDel(CONFIG.storageKey)}
+    if(e.target.id==="pKit"){consent.kit=e.target.checked;saveConsent()}
+    if(e.target.id==="pLock"){consent.autolock=+e.target.value;saveConsent();bumpIdle()}
+  });
+  m.addEventListener("click",async e=>{
+    const b=e.target.closest("[data-p]");if(!b)return;const p=b.dataset.p;
+    if(p==="done"){m.close();render()}
+    else if(p==="set"||p==="chg"){m.close();passcodeDialog(p==="chg")}
+    else if(p==="rm"){if(await ask("Remove the passcode? Your saved work will be stored without encryption on this device.","Remove",true)){cryptoKey=null;saltB64=null;consent.autolock=0;saveConsent();await persist();m.close();render()}}
+    else if(p==="erase"){if(await ask("This erases your saved work and consent on this device and reloads the app. Export a backup first if you need one.","Erase everything",true)){lsDel(CONFIG.storageKey);lsDel(CONFIG.consentKey);state=null;cryptoKey=null;location.reload()}}
+  });
+}
+function passcodeDialog(change){
+  const m=openModal(`<h2>${change?"Change":"Set"} passcode</h2>
+  <p class="hint">At least 8 characters. A short phrase of several words works well. There is no reset: a forgotten passcode means the data stays locked.</p>
+  <label class="hint" for="pc1">New passcode</label><input type="password" id="pc1" autocomplete="new-password">
+  <label class="hint" for="pc2" style="display:block;margin-top:8px">Confirm passcode</label><input type="password" id="pc2" autocomplete="new-password">
+  <div class="err" id="pcErr" role="alert"></div>
+  <div class="actions"><button class="btn line" data-c="x">Cancel</button><button class="btn primary" data-c="ok">Save passcode</button></div>`);
+  m.addEventListener("click",async e=>{
+    const b=e.target.closest("[data-c]");if(!b)return;
+    if(b.dataset.c==="x"){m.close();return}
+    const a=$("#pc1",m).value,c=$("#pc2",m).value,err=$("#pcErr",m);
+    if(a.length<8){err.textContent="Use at least 8 characters.";return}
+    if(a!==c){err.textContent="The two entries do not match.";return}
+    b.disabled=true;err.textContent="Encrypting…";
+    try{
+      const salt=crypto.getRandomValues(new Uint8Array(16));
+      cryptoKey=await deriveKey(a,salt);saltB64=b64(salt);
+      if(!consent.save){consent.save=true;saveConsent()}
+      await persist();m.close();bumpIdle();render();
+      openModal(`<p>Passcode set. Your saved work is now encrypted. Consider downloading an encrypted backup from <b>Backup / restore</b>.</p><div class="actions"><button class="btn primary" onclick="this.closest('.overlay').remove()">OK</button></div>`);
+    }catch(x){err.textContent="Could not set passcode: "+x.message;b.disabled=false}
+  });
+}
+function saveConsent(){lsSet(CONFIG.consentKey,JSON.stringify(consent))}
+
+/* ============ BACKUP ============ */
+function openBackup(){
+  const m=openModal(`<h2>Backup / restore</h2>
+  <p class="hint">${cryptoKey?"Your backup file is encrypted with your passcode.":"Your backup file is not encrypted because no passcode is set. Store it somewhere private."}</p>
+  <div class="actions" style="justify-content:flex-start"><button class="btn primary" data-b="exp">Download backup</button><label class="btn line" style="cursor:pointer">Restore from file<input type="file" accept=".json,application/json" data-b="file" hidden></label></div>
+  <div class="err" id="bErr" role="alert"></div>
+  <div class="actions"><button class="btn line" data-b="x">Close</button></div>`);
+  m.addEventListener("click",async e=>{
+    const b=e.target.closest("[data-b]");if(!b)return;
+    if(b.dataset.b==="x")m.close();
+    if(b.dataset.b==="exp"){
+      const pack=cryptoKey?await encryptWith(cryptoKey,saltB64,state):{enc:false,data:state};
+      const blob=new Blob([JSON.stringify(pack)],{type:"application/json"});
+      const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="creed-to-commerce-backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+    }
+  });
+  m.addEventListener("change",async e=>{
+    if(e.target.dataset.b!=="file")return;
+    const file=e.target.files[0];if(!file)return;const err=$("#bErr",m);
+    try{
+      if(file.size>2e6)throw new Error("File is too large.");
+      const pack=JSON.parse(await file.text());let data;
+      if(pack.enc){
+        const pw=window.prompt("Enter the passcode used for this backup:");if(!pw)return;
+        const key=await deriveKey(pw,unb64(pack.salt));
+        try{data=await decryptWith(key,pack)}catch(x){throw new Error("Wrong passcode or damaged file.")}
+      }else data=pack.data;
+      const clean=sanitize(data);
+      if(!(await ask("Replace your current work with this backup?","Restore",true)))return;
+      state=clean;current=0;await persist();m.close();render();
+    }catch(x){err.textContent=x.message||"Could not read that file."}
+  });
+}
+
+/* ============ LOCK / UNLOCK ============ */
+let attempts=0;
+function lock(){
+  if(!cryptoKey)return;
+  clearTimeout(saveTimer);
+  persist().finally(()=>{state=null;cryptoKey=null;closeReport();$("#modalRoot").innerHTML="";$("#app").innerHTML="";showLock()});
+}
+function showLock(msg){
+  const pack=storedPack();
+  const el=document.createElement("div");el.className="lock";el.id="lockScreen";
+  el.innerHTML=`<div class="modal"><div class="basmala" style="color:var(--gold-d);font-size:30px" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div><h2>Locked</h2>
+  <p class="hint">Enter your passcode to open your Creed-to-Commerce™ work.</p>
+  <input type="password" id="lkPw" autocomplete="current-password" aria-label="Passcode"><div class="err" id="lkErr" role="alert">${esc(msg||"")}</div>
+  <div class="actions" style="justify-content:center"><button class="btn primary" id="lkGo">Unlock</button></div></div>`;
+  document.body.appendChild(el);
+  const go=async()=>{
+    const pw=$("#lkPw",el).value,err=$("#lkErr",el);if(!pw)return;
+    const btn=$("#lkGo",el);btn.disabled=true;
+    try{
+      const key=await deriveKey(pw,unb64(pack.salt));
+      const data=await decryptWith(key,pack);
+      state=sanitize(data);cryptoKey=key;saltB64=pack.salt;attempts=0;el.remove();current=0;render();bumpIdle();
+    }catch(x){
+      attempts++;const wait=Math.min(30,Math.pow(2,attempts-1));
+      err.textContent=`Incorrect passcode. Please wait ${wait}s before trying again.`;
+      setTimeout(()=>{btn.disabled=false;err.textContent=""},wait*1000);
+    }
+  };
+  $("#lkGo",el).addEventListener("click",go);
+  $("#lkPw",el).addEventListener("keydown",e=>{if(e.key==="Enter")go()});
+  $("#lkPw",el).focus();
+}
+
+/* ============ BOOT ============ */
+function showConsent(){
+  return new Promise(res=>{
+    const m=openModal(`
+    <div class="basmala" style="color:var(--gold-d);font-size:30px;text-align:center" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h2>Welcome to the Creed-to-Commerce™ Idea Builder</h2>
+    <p>Before you begin, please review how this app handles your information and choose what you allow.</p>
+    <div class="row"><input type="checkbox" id="cSave" checked><label for="cSave"><b>Save my work on this device</b><br><span class="hint">Stored in this browser only so you can return later. You can add a passcode to encrypt it.</span></label></div>
+    ${CONFIG.kitFormUrl?`<div class="row"><input type="checkbox" id="cKit"><label for="cKit"><b>Show the optional email sign-up box</b><br><span class="hint">Nothing is sent unless you press Subscribe.</span></label></div>`:""}
+    <div class="row"><span class="hint">This app has no accounts, cookies, trackers or analytics, and sends your answers nowhere. Fonts load from Google Fonts. Because it is a single local file, anyone who can open this browser profile on this device could see unlocked data, so use a passcode on shared devices.</span></div>
+    <div class="row"><input type="checkbox" id="cAgree"><label for="cAgree"><b>I understand and agree</b> to the above. <span class="hint">Required to continue. Change these choices any time under Privacy &amp; security.</span></label></div>
+    <div class="actions"><button class="btn primary" id="cGo" disabled>Continue</button></div>`,{locked:true});
+    const agree=$("#cAgree",m),go=$("#cGo",m);
+    agree.addEventListener("change",()=>go.disabled=!agree.checked);
+    go.addEventListener("click",()=>{
+      consent={accepted:true,save:$("#cSave",m).checked,kit:!!($("#cKit",m)&&$("#cKit",m).checked),autolock:0,ts:new Date().toISOString()};
+      saveConsent();m.close();res();
+    });
+  });
+}
+async function boot(){
+  try{consent=JSON.parse(lsGet(CONFIG.consentKey)||"null")}catch(e){consent=null}
+  if(!consent||!consent.accepted)await showConsent();
+  const pack=storedPack();
+  if(pack&&pack.enc){showLock();return}
+  try{state=pack&&pack.data?sanitize(pack.data):freshState()}catch(e){state=freshState()}
+  render();
+  if(consent.save)persist();
+}
+window.addEventListener("beforeunload",()=>{if(state&&consent&&consent.save&&!cryptoKey){try{lsSet(CONFIG.storageKey,JSON.stringify({enc:false,data:state}))}catch(e){}}});
+boot();
+</script>
+</body>
+</html>
